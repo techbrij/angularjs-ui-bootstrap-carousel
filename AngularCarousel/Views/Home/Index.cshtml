@@ -1,0 +1,48 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/ui-bootstrap-tpls-0.6.0.min.js"></script>
+    <script src="~/Scripts/app/carousel-demo.js"></script>
+</head>
+<body>
+     <h3 style="text-align:center">Visit <a href="http://techbrij.com/carousel-image-angularjs-ui-bootstrap-asp-net-mvc" style="text-decoration:none">step by step tutorial</a> at techbrij.com</h3>
+    <div data-ng-app="myModule">
+        <div data-ng-controller="myController">
+            <carousel interval="myInterval">
+    <slide data-ng-repeat="slide in slides" active="slide.active">
+      <img data-ng-src="{{slide.Path}}" style="margin:auto;">
+      <div class="carousel-caption">
+        <h4>{{slide.Title}}</h4>
+        <p>{{slide.Summary}}</p>
+      </div>
+    </slide>
+  </carousel>
+            <div class="row-fluid">
+                <div class="span6">
+                    <ul>
+                        <li data-ng-repeat="slide in slides">
+                            <button class="btn btn-mini" data-ng-class="{'btn-info': !slide.active, 'btn-success': slide.active}" data-ng-disabled="slide.active" data-ng-click="slide.active = true">select</button>
+                            {{slide.Title}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="span6">
+                    Interval, in milliseconds:
+                    <input type="number" data-ng-model="myInterval">
+                    <br />
+                    Enter a negative number to stop the interval.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
